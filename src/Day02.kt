@@ -31,13 +31,13 @@ fun main() {
     part2(input).println()
 }
 
-val part1CheckCubesMap = mapOf(
+private val part1CheckCubesMap = mapOf(
     "red" to 12,
     "green" to 13,
     "blue" to 14,
 )
 
-fun String.isNotValidDraw(): Boolean {
+private fun String.isNotValidDraw(): Boolean {
     return this
         .split(",")
         .map { colorInfo ->
@@ -46,18 +46,18 @@ fun String.isNotValidDraw(): Boolean {
         }.any { it }
 }
 
-fun String.getGameId(): Int {
+private fun String.getGameId(): Int {
     return this.split(" ")[1].toInt()
 }
 
-fun String.getColorEntry(): Pair<String, Int> {
+private fun String.getColorEntry(): Pair<String, Int> {
     val colorEntry = this.trim().split(" ")
     val cubesCount = colorEntry[0].toInt()
     val colorName = colorEntry[1]
     return colorName to cubesCount
 }
 
-fun calculateGameCubeSetPower(draws: List<String>): Int {
+private fun calculateGameCubeSetPower(draws: List<String>): Int {
     val cubesColorMaxCountMap = hashMapOf<String, Int>()
     draws.forEach { draw ->
         draw.split(",").map { colorInfo ->
